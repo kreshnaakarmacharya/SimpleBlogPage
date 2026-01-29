@@ -22,6 +22,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "ejs": "^4.0.1",
     "express": "^5.2.1",
     "lodash": "^4.17.21"
   }
