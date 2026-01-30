@@ -11,21 +11,31 @@ app.listen(3000);
 
 app.get('/',(req,res)=>{
     // res.send('<p>Home Page</p>');
-    res.sendFile('./views/index.html',{root:__dirname});
+    const blogs=[
+
+        {title : 'yoshi finds egges',snippets : 'hjdgDKH; hgldJHDjh jhsdjlh'},
+         {title : 'MARIO finds starts',snippets : 'hjdgDKH; hgldJHDjh jhsdjlh'},
+         {title : 'how to defeat browser',snippets : 'hjdgDKH; hgldJHDjh jhsdjlh'},
+    ];
+   res.render('index',{title: 'Home',blogs : blogs});
 })
 
 app.get('/about',(req,res)=>{
     // res.send('<p>about Page</p>');
-    res.sendFile('./views/about.html',{root:__dirname});
+    res.render('about',{title: 'About'})
 })
 
 //redirects
 
-app.get('/about-us',(req,res)=>{
-    res.redirect('/about');
+// app.get('/about-us',(req,res)=>{
+//     res.redirect('/about');
+// })
+
+app.get('/blog/create',(req,res)=>{
+    res.render('create',{title: 'blog'});
 })
 
 //404 page
 app.use((req,res)=>{
-    res.sendFile('./views/404.html',{root:__dirname});
+    res.status(404).render('404',{title: '404'});
 })
