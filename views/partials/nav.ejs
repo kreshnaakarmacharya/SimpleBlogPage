@@ -1,11 +1,40 @@
- <nav>
-        <div>
-            <a href="/"><h1>Blog Ninja</h1></a>
-            <p> A Net Ninja Site</p>
-        </div>
-        <ul>
-            <li><a href="/">Blogs</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/new">New Blog</a></li>
-        </ul>
-    </nav>
+<nav style="background:#f9f9f9; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px 40px; font-family:Arial, sans-serif; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000;">
+  <!-- Logo Section -->
+  <div style="display:flex; flex-direction:column;">
+    <a href="/" style="text-decoration:none; color:#007BFF;">
+      <h1 style="margin:0; font-size:1.8em;">Blog</h1>
+    </a>
+    <span style="font-size:0.9em; color:#555;">By Kreshnaa Karmacharya</span>
+</div>
+
+  <!-- Navigation Links -->
+  <ul style="list-style:none; display:flex; margin:0; padding:0;">
+    <li style="margin-left:30px;">
+      <a href="/" style="text-decoration:none; color:#333; font-weight:600; padding:8px 12px; border-radius:6px; transition:all 0.3s;">Blogs</a>
+    </li>
+    <li style="margin-left:30px;">
+      <a href="/about" style="text-decoration:none; color:#333; font-weight:600; padding:8px 12px; border-radius:6px; transition:all 0.3s;">About</a>
+    </li>
+    <li style="margin-left:30px;">
+      <a href="/blogs/new" style="text-decoration:none; color:#333; font-weight:600; padding:8px 12px; border-radius:6px; transition:all 0.3s; background:#007BFF; color:#fff;">New Blog</a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  // Hover effects for nav links
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('mouseover', () => {
+      if(link.textContent !== 'New Blog'){
+        link.style.background = '#007BFF';
+        link.style.color = '#fff';
+      }
+    });
+    link.addEventListener('mouseout', () => {
+      if(link.textContent !== 'New Blog'){
+        link.style.background = 'transparent';
+        link.style.color = '#333';
+      }
+    });
+  });
+</script>

@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
-<body>
-     <%- include('./partials/nav.ejs') %>
-    <div class="non-found content">
-        <h2>OOPS, page not found</h2>
+
+<body style="font-family:Arial, sans-serif; background:#f9f9f9; display:flex; flex-direction:column; min-height:100vh;">
+
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="non-found content" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:50px;">
+        <h1 style="font-size:4em; color:#FF4C4C; margin-bottom:20px;">404</h1>
+        <h2 style="font-size:2em; color:#333; margin-bottom:15px;">OOPS, Page Not Found</h2>
+        <p style="color:#555; font-size:1.1em; margin-bottom:30px;">
+            The page you are looking for doesn’t exist or has been moved.
+        </p>
+        <a href="/" style="text-decoration:none; background:#007BFF; color:#fff; padding:12px 25px; border-radius:8px; font-weight:bold; transition:background 0.3s;">
+            Go Back Home
+        </a>
     </div>
-     <%- include('./partials/footer.ejs') %>
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script>
+        // Hover effect for the button
+        const homeBtn = document.querySelector('.non-found a');
+        homeBtn.addEventListener('mouseover', () => homeBtn.style.background = '#0056b3');
+        homeBtn.addEventListener('mouseout', () => homeBtn.style.background = '#007BFF');
+    </script>
 </body>
 </html>

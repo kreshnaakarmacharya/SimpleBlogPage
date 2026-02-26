@@ -2,18 +2,44 @@
 <html lang="en">
 <%- include('./partials/head.ejs') %>
 <body>
-     <%- include('./partials/nav.ejs') %>
-    <div class="create-blog content">
-        <form action="/blogs" method="POST">
-            <label for="title">Blog Title</label>
-            <input type="text" id="title" name="title" required>
-            <label for="snippet">Blog Content</label>
-            <input type="text" id="snippet" name="snippet" required>
-            <label for="body">Blog body</label>
-            <textarea id="body" name="body" required></textarea>
-            <button>Submit</button>
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="create-blog content" style="max-width:700px; margin:50px auto; padding:30px; background:#f9f9f9; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.1); font-family:Arial, sans-serif;">
+        <h2 style="text-align:center; color:#333; margin-bottom:25px; font-size:2em;">Create a New Blog</h2>
+        <form action="/blogs" method="POST" style="display:flex; flex-direction:column;">
+            
+            <label for="title" style="margin-bottom:5px; font-weight:bold; color:#555;">Blog Title</label>
+            <input type="text" id="title" name="title" required 
+                style="padding:12px; margin-bottom:20px; border-radius:8px; border:1px solid #ccc; font-size:1em; outline:none; transition:border 0.2s;">
+            
+            <label for="snippet" style="margin-bottom:5px; font-weight:bold; color:#555;">Blog Content / Snippet</label>
+            <input type="text" id="snippet" name="snippet" required 
+                style="padding:12px; margin-bottom:20px; border-radius:8px; border:1px solid #ccc; font-size:1em; outline:none; transition:border 0.2s;">
+            
+            <label for="body" style="margin-bottom:5px; font-weight:bold; color:#555;">Blog Body</label>
+            <textarea id="body" name="body" required 
+                style="padding:12px; margin-bottom:25px; border-radius:8px; border:1px solid #ccc; font-size:1em; outline:none; min-height:150px; transition:border 0.2s;"></textarea>
+            
+            <button type="submit" 
+                style="padding:14px; background:#007BFF; color:#fff; border:none; border-radius:8px; font-size:1.1em; cursor:pointer; transition:background 0.3s;">
+                Submit Blog
+            </button>
         </form>
     </div>
-     <%- include('./partials/footer.ejs') %>
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script>
+        // Add focus effect to inputs
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('focus', () => el.style.borderColor = '#007BFF');
+            el.addEventListener('blur', () => el.style.borderColor = '#ccc');
+        });
+
+        // Add hover effect to button
+        const button = document.querySelector('button');
+        button.addEventListener('mouseover', () => button.style.background = '#0056b3');
+        button.addEventListener('mouseout', () => button.style.background = '#007BFF');
+    </script>
 </body>
 </html>

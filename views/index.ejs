@@ -5,24 +5,41 @@
 <body>
   <%- include('./partials/nav.ejs') %>
 
-  <div class="blogs content">
-    <h2>All Blogs</h2>
+  <div class="blogs content" style="max-width:900px; margin:40px auto; padding:20px; font-family:Arial, sans-serif;">
+    <!-- Adjusted H1 -->
+    <h1 style="text-align:center; color:#333; margin-bottom:25px; font-size:1.8em; font-weight:600; letter-spacing:1px;">
+      All Blogs
+    </h1>
 
     <% if (blogs.length > 0) { %>
       <% blogs.forEach(blog => { %>
-        <div class="single-blog">
-        <a class="single" href="/blogs/<%= blog._id %>" >
-          <h3 class="title"><%= blog.title %></h3>
-          <p class="snippet"><%= blog.snippet %></p>
-          <hr>
+        <div class="single-blog" style="margin-bottom:25px; background:#fdfdfd; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); transition:transform 0.2s, box-shadow 0.2s;">
+          <a class="single" href="/blogs/<%= blog._id %>" style="text-decoration:none; color:inherit;">
+            <h3 class="title" style="margin:0 0 10px 0; color:#007BFF; font-size:1.4em; font-weight:600;"><%= blog.title %></h3>
+            <p class="snippet" style="color:#555; font-size:1.05em; margin-bottom:15px;"><%= blog.snippet %></p>
+            <span style="color:#007BFF; font-weight:bold;">Read More →</span>
           </a>
         </div>
       <% }) %>
     <% } else { %>
-      <p>No blogs to display.</p>
+      <p style="text-align:center; color:#555; font-size:1.1em;">No blogs to display.</p>
     <% } %>
   </div>
 
   <%- include('./partials/footer.ejs') %>
+
+  <script>
+    // Hover effect for cards
+    document.querySelectorAll('.single-blog').forEach(card => {
+      card.addEventListener('mouseover', () => {
+        card.style.transform = 'translateY(-5px)';
+        card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
+      });
+      card.addEventListener('mouseout', () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = '0 4px 8px rgba(0,0,0,0.05)';
+      });
+    });
+  </script>
 </body>
 </html>
