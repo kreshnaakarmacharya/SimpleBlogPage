@@ -1,62 +1,58 @@
-const http=require('http');
-const fs=require('fs');
-const _= require('lodash');
+const http = require('http');
+const fs = require('fs');
+const _ = require('lodash');
 
- const server=http.createServer((req,res)=>{
-    // console.log(req.url,req.method);
+// Create server
+const server = http.createServer((req, res) => {
+    // Log request URL and method
+    console.log(`Request: ${req.method} ${req.url}`);
 
-    //lodash
-    const num=_.random(0,20);
-    console.log(num);
+    // Lodash examples
+    const num = _.random(0, 20); // random number 0-20
+    console.log(`Random number: ${num}`);
 
-    const greet = _.once(() => {
-    console.log('hello');
-});
+    const greet = _.once(() => console.log('Hello')); // function runs once
+    greet();
+    greet();
 
-greet();
-greet();
+    // Set header
+    res.setHeader('Content-Type', 'text/html');
 
-
-    //set header content type
-    res.setHeader('Content-Type','text/html');
-    // res.write('<p>Hello Werld</p>');
-    //  res.write('<p>Hello World</p>');
-    // res.end();
-
-    let path='./views/';
-    switch(req.url){
+    // Determine file path
+    let path = './views';
+    switch (req.url) {
         case '/':
-            path +='/index.html';
-            res.statusCode=200;
+            path += '/index.html';
+            res.statusCode = 200;
             break;
-        case'/about':
-            path +='/about.html';
-            res.statusCode=200;
+        case '/about':
+            path += '/about.html';
+            res.statusCode = 200;
             break;
-        case'/about-me':
-            res.statusCode=301;
-            res.setHeader('Location','/about');
+        case '/about-me':
+            res.statusCode = 301;
+            res.setHeader('Location', '/about');
             res.end();
-            break;
+            return; // important to exit after redirect
         default:
-            path +='/404.html';
-            res.statusCode=400;
+            path += '/404.html';
+            res.statusCode = 404; // 404 instead of 400
             break;
     }
 
-    //send an html file
-    fs.readFile(path,(err,data)=>{
-        if(err){
-            console.log(err);
-            res.end();
-        }
-        else{
-            // res.write(data);
+    // Send HTML file
+    fs.readFile(path, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.statusCode = 500;
+            res.end('<h1>Server Error</h1>');
+        } else {
             res.end(data);
         }
-    })
- });
+    });
+});
 
- server.listen(3000,'localhost',()=>{
-    console.log('Server is listening on port 3000');
- })
+// Listen on port
+server.listen(3000, 'localhost', () => {
+    console.log('Server is listening on http://localhost:3000');
+});

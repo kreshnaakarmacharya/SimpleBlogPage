@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# MacOS
+.DS_Store
+
+# Optional: local database files or uploads
+*.sqlite
+uploads/
+
+# Ignore IDE/editor folders (VSCode, etc.)
+.vscode/
+.idea/
