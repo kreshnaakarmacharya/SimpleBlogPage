@@ -30,29 +30,6 @@ A modern blog web application built with **Node.js**, **Express**, **EJS**, and 
 
 ---
 
-## 🌐 Deployment
-
-You can deploy this project on **Render** or **Railway**:
-
-### Render Deployment
-
-1. Go to [Render](https://render.com) → New → Web Service  
-2. Connect your GitHub repository  
-3. Build Command: `npm install`  
-4. Start Command: `npm start`  
-5. Add environment variables:
-   - `MONGODB_URI` = your MongoDB Atlas connection string  
-6. Render will deploy your app and provide a public URL
-
-### Railway Deployment
-
-1. Go to [Railway](https://railway.app) → New Project → Deploy from GitHub  
-2. Select your repository → Start Command: `npm start`  
-3. Add environment variables in Settings → Variables  
-4. Railway will deploy your app and give a public URL
-
----
-
 ## 📝 Usage
 
 - `/` → Homepage with list of all blogs  
