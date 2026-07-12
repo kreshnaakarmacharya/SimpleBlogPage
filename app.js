@@ -9,7 +9,7 @@ const app=express();
 const PORT=3000;
 
 //connect to mongo db
-const dbURI = 'mongodb+srv://krishnaakarmacharya82_db_user:%40Krishnaa%23123@blogcluster.yzpnaw7.mongodb.net/nodetuts?appName=blogcluster';
+const dbURI = 'mongodb+srv://krishnaakarmacharya82_db_user:qNIoIK14D0tmuuqZ@blogcluster.yzpnaw7.mongodb.net/nodetuts?appName=blogcluster';
 
 async function connectDB() {
   try {
